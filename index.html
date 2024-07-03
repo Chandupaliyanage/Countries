@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Info</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Custom CSS for background image and hover effect */
+        body {
+            background-image: url('https://source.unsplash.com/1600x900/?nature'); /* Replace with your image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #fff; /* Text color on top of the background image */
+            font-family: Arial, sans-serif; /* Example font */
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background color for better readability */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        table {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for tables */
+        }
+
+        /* Hover effect on table rows */
+        table tr:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.9); /* Lighten the background color on hover */
+            border-color: #ccc;
+            opacity: 0.8;
+        }
+
+        table tr:hover td {
+            border-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="mb-3">
+            <input type="text" class="form-control" id="txtSearchValue" placeholder="Enter country name">
+        </div>
+        <div class="mb-3">
+            <input type="button" class="btn btn-primary" value="Search" onclick="searchCountry()">
+        </div>
+        <div class="card mb-3" id="countryCard" style="display: none;">
+            <div class="card-body">
+                <h5 class="card-title" id="officialName">Official name</h5>
+                <h6 class="card-subtitle mb-2 text-muted" id="name">Name</h6>
+                <div id="img" class="mb-3"></div>
+                <table class="table" id="tbl"></table>
+            </div>
+        </div>
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Flag</th>
+                </tr>
+            </thead>
+            <tbody id="tblCountries"></tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="countryModal" tabindex="-1" aria-labelledby="countryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="countryModalLabel">Country Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 id="modalOfficialName">Official name</h5>
+                    <h6 id="modalCommonName" class="text-muted">Name</h6>
+                    <div id="modalImg" class="mb-3"></div>
+                    <table class="table" id="modalTbl"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
